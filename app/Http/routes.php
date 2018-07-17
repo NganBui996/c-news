@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('pages.admin.layout.app');
 });
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
