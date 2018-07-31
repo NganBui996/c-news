@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTintucsTable extends Migration
+class TaoTinTuc extends Migration
 {
     /**
      * Run the migrations.
@@ -12,18 +12,18 @@ class CreateTintucsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tintucs', function (Blueprint $table) {
-            $table->increments('id_tintuc');
-            $table->string('tieude');
-            $table->string('tomtat');
-            $table->text('noidung');
-            $table->string('hinhanh');
-            $table->integer('noibat');
-            $table->integer('soluotkiem');
-            $table->integer('id_loaitin');
-            $table->longText('comment');
-            $table->timestamps('create_at');
-            $table->timestamps('update_at');
+        Schema::create('TinTuc', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('TieuDe');
+            $table->string('TieuDeKhongDau');
+            $table->text('TomTat');
+            $table->longText('NoiDung');
+            $table->string('Hinh');
+            $table->integer('NoiBat')->default(0);
+            $table->integer('SoLuotXem')->default(0);
+            $table->integer('idLoaiTin')->unsigned();
+            $table->foreign('idLoaiTin')->references('id')->on('LoaiTin');
+            $table->timestamps();
         });
     }
 
@@ -34,6 +34,6 @@ class CreateTintucsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('tintucs');
+        Schema::drop('TinTuc');
     }
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLoaitinsTable extends Migration
+class TaoLoaiTin extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,13 @@ class CreateLoaitinsTable extends Migration
      */
     public function up()
     {
-        Schema::create('loaitins', function (Blueprint $table) {
-            $table->increments('id_loaitin');
-            $table->integer('id_theloai');
-            $table->timestamps('create_at');
-            $table->timestamps('update_at');
+        Schema::create('LoaiTin', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('idTheLoai')->unsigned();
+            $table->foreign('idTheLoai')->references('id')->on('TheLoai');
+            $table->string('Ten');
+            $table->string('TenKhongDau');
+            $table->timestamps();
         });
     }
 
@@ -27,6 +29,6 @@ class CreateLoaitinsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('loaitins');
+        Schema::drop('LoaiTin');
     }
 }

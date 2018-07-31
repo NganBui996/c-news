@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TaoTheLoai extends Migration
+class TaoSlide extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,12 @@ class TaoTheLoai extends Migration
      */
     public function up()
     {
-        Schema::create('TheLoai', function (Blueprint $table) {
+        Schema::create('Slide', function (Blueprint $table) {
             $table->increments('id');
             $table->string('Ten');
-            $table->string('TenKhongDau');
+            $table->string('Hinh');
+            $table->string('NoiDung');
+            $table->string('link');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class TaoTheLoai extends Migration
      */
     public function down()
     {
-        Schema::drop('TheLoai');
+        Schema::drop('Slide');
     }
 }
